@@ -12,3 +12,5 @@ echo ':MZexec:M::MZ::/path/to/exerunsuit.sh:' | sudo tee /proc/sys/fs/binfmt_mis
   emu2 (DOS emulator) - https://github.com/dmsc/emu2
   
   2ine (OS2 emulator) - https://github.com/darkstar/2ine
+
+  mono (.NET Framework) for architectures other than x86 or AMD64 - https://www.mono-project.com/
