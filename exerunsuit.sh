@@ -52,7 +52,7 @@ fi
 
 if [[ $exerunsuit_exe_type == *"x86-64"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:Windows NT | CPU:amd64 | Runner:NONE!"
+    echo "OS:Windows NT | CPU:amd64 | Runner:$exerunsuit_prog_win"
     $exerunsuit_prog_win "$@"
     exit
   fi
