@@ -1,5 +1,5 @@
 # Purpose
-Runs a suitable software to run an .EXE file. (Windows, DOS or OS/2) on Linux
+Runs a suitable software to run an .EXE file (Windows, DOS or OS/2) on Linux
 
 # Binfmt setup
 ```bash
