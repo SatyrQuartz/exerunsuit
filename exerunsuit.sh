@@ -2,7 +2,7 @@
 exerunsuit_prog_dos="emu2"
 exerunsuit_prog_win="wine"
 exerunsuit_prog_dotnet="mono"
-exerunsuit_prog_os2="2ine"
+exerunsuit_prog_os2="lx_loader"
 
 exerunsuit_exe_path="$1"
 
