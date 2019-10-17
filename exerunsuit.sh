@@ -56,10 +56,6 @@ if [[ $exerunsuit_exe_type == *"x86-64"* ]]; then
     $exerunsuit_prog_win "$@"
     exit
   fi
-  if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:Windows NT | CPU:amd64 | Runner:NONE!"
-    exit
-  fi
   echo "OS:Windows NT | CPU:amd64 | Runner:NONE!"
   exit
 fi
@@ -148,7 +144,7 @@ if [[ $exerunsuit_exe_type == *"ARMv7 Thumb"* ]]; then
   exit
   fi
   if [[ $exerunsuit_arch == "aarch64"* ]]; then
-  echo "OS:Windows NT | CPU:armhf  | Runner:$exerunsuit_prog_win"
+  echo "OS:Windows NT | CPU:armhf | Runner:$exerunsuit_prog_win"
   $exerunsuit_prog_win "$@"
   exit
   fi
@@ -182,7 +178,7 @@ fi
 
 if [[ $exerunsuit_exe_type == *"PE32+ executable"* ]]; then
     if [[ $exerunsuit_arch == "aarch64"* ]]; then
-    echo "OS:Windows NT | CPU:?  | Runner:$exerunsuit_prog_win"
+    echo "OS:Windows NT | CPU:? | Runner:$exerunsuit_prog_win"
     $exerunsuit_prog_win "$@"
     exit
     fi
