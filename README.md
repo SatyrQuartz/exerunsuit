@@ -12,6 +12,11 @@ Enable Verbose
 exerunsuit_verbose=1 exerunsuit.sh
 ```
 
+Prefer Mono instead of Wine
+```
+exerunsuit_prefermono=1 exerunsuit.sh
+```
+
 # Software  
   wine (Windows emulator) - https://www.winehq.org/
   
