@@ -5,6 +5,12 @@ Runs a suitable software to run an .EXE file (Windows, DOS or OS/2) on Linux
 ```bash
 echo ':MZexec:M::MZ::/path/to/exerunsuit.sh:' | sudo tee /proc/sys/fs/binfmt_misc/register
 ```
+# Variables
+
+Enable Verbose
+```
+exerunsuit_verbose=1 exerunsuit.sh
+```
 
 # Software  
   wine (Windows emulator) - https://www.winehq.org/
