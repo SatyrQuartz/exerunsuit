@@ -14,22 +14,33 @@ EMU2_DRIVE_C=''
 EMU2_CWD='C:\'
 EMU2_DEFAULT_DRIVE='C:\'
 
+[ -z "$exerunsuit_verbose" ] && exerunsuit_verbose=0
+[ -z "$exerunsuit_prefermonoexerunsuit_prefermono" ] && exerunsuit_prefermono=0
+
 exerunsuit_verbose () {
   if [[ $exerunsuit_verbose == 1 ]]; then
     echo "OS:$1 | CPU:$2 | Runner:$3"
   fi
 }
 
+exerunsuit_rundotnet () {
+  if [[ $exerunsuit_prefermono == 0 ]]; then
+    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_win
+    $exerunsuit_prog_win $exerunsuit_exe_path
+  fi
+  if [[ $exerunsuit_prefermono == 1 ]]; then
+    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_dotnet
+    $exerunsuit_prog_dotnet $exerunsuit_exe_path
+  fi
+}
 
 if [[ $exerunsuit_exe_type == *".Net assembly"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_win
-    $exerunsuit_prog_win "$@"
+    exerunsuit_rundotnet
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_win
-    $exerunsuit_prog_win "$@"
+    exerunsuit_rundotnet
     exit
   fi
   exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_dotnet
