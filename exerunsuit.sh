@@ -14,174 +14,180 @@ EMU2_DRIVE_C=''
 EMU2_CWD='C:\'
 EMU2_DEFAULT_DRIVE='C:\'
 
+exerunsuit_verbose () {
+  if [[ $exerunsuit_verbose == 1 ]]; then
+    echo "OS:$1 | CPU:$2 | Runner:$3"
+  fi
+}
+
 
 if [[ $exerunsuit_exe_type == *".Net assembly"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:.NET Framework | CPU:all | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:.NET Framework | CPU:all | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
-  echo "OS:.NET Framework | CPU:all | Runner:$exerunsuit_prog_dotnet"
+  exerunsuit_verbose ".NET Framework" all $exerunsuit_prog_dotnet
   $exerunsuit_prog_dotnet "$@"
   exit
 fi
 
 if [[ $exerunsuit_exe_type == *"(Windows CE)"* ]]; then
   if [[ $exerunsuit_exe_type == *"(Windows CE) ARM"* ]]; then
-    echo "OS:Windows CE | CPU:armhf | Runner:NONE!"
+    exerunsuit_verbose "Windows CE" armhf NONE!
     exit
   fi
   if [[ $exerunsuit_exe_type == *"(Windows CE) Intel 80386"* ]]; then
-    echo "OS:Windows CE | CPU:i386 | Runner:NONE!"
+    exerunsuit_verbose "Windows CE" i386 NONE!
     exit
   fi
   if [[ $exerunsuit_exe_type == *"(Windows CE) MIPS R4000"* ]]; then
-    echo "OS:Windows CE | CPU:mips | Runner:NONE!"
+    exerunsuit_verbose "Windows CE" mips NONE!
     exit
   fi
   if [[ $exerunsuit_exe_type == *"(Windows CE) Hitachi SH3"* ]]; then
-    echo "OS:Windows CE | CPU:sh3 | Runner:NONE!"
+    exerunsuit_verbose "Windows CE" sh3 NONE!
     exit
   fi
 fi
 
 if [[ $exerunsuit_exe_type == *"x86-64"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:Windows NT | CPU:amd64 | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows NT" amd64 $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
-  echo "OS:Windows NT | CPU:amd64 | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" amd64 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"Intel 80386"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:Windows NT | CPU:i386 | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows NT" i386 $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:Windows NT | CPU:i386 | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows NT" i386 $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
-  echo "OS:Windows NT | CPU:i386 | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" i386 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"MS-DOS executable, NE for MS Windows 3.x"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:Windows 3.x | CPU:i386 | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows 3.x" i386 $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:Windows 3.x | CPU:i386 | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows 3.x" i386 $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
   fi
-  echo "OS:Windows 3.x | CPU:i386 | Runner:NONE!"
+  exerunsuit_verbose "Windows 3.x" i386 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"MS-DOS executable, LX for OS/2"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:OS/2 2.x | CPU:i386 | Runner:$exerunsuit_prog_os2"
+    exerunsuit_verbose "OS/2 2.x" i386 $exerunsuit_prog_os2
     $exerunsuit_prog_os2 "$@"
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:OS/2 2.x | CPU:i386 | Runner:$exerunsuit_prog_os2"
+    exerunsuit_verbose "OS/2 2.x" i386 $exerunsuit_prog_os2
     $exerunsuit_prog_os2 "$@"
     exit
   fi
-  echo "OS:OS/2 2.x | CPU:i386 | Runner:NONE!"
+  exerunsuit_verbose "OS/2 2.x" i386 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"MS-DOS executable, NE for OS/2 1.x"* ]]; then
   if [[ $exerunsuit_arch == *"x86_64"* ]]; then
-    echo "OS:OS/2 1.x | CPU:i386 | Runner:$exerunsuit_prog_os2"
+    exerunsuit_verbose "OS/2 1.x" i386 $exerunsuit_prog_os2
     $exerunsuit_prog_os2 "$@"
     exit
   fi
   if [[ $exerunsuit_arch == "i"* ]]; then
-    echo "OS:OS/2 1.x | CPU:i386 | Runner:$exerunsuit_prog_os2"
+    exerunsuit_verbose "OS/2 1.x" i386 $exerunsuit_prog_os2
     $exerunsuit_prog_os2 "$@"
     exit
   fi
-  echo "OS:OS/2 1.x | CPU:i386 | Runner:NONE!"
+  exerunsuit_verbose "OS/2 1.x" i386 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"MS-DOS executable"* ]]; then
-  echo "OS:MS-DOS | CPU:i386 | Runner:$exerunsuit_prog_dos"
+  exerunsuit_verbose MS-DOS i386 $exerunsuit_prog_dos
   $exerunsuit_prog_dos "$@"
   exit
 fi
 
 if [[ $exerunsuit_exe_type == *"COM executable for DOS"* ]]; then
-  echo "OS:MS-DOS | CPU:i386 | Runner:$exerunsuit_prog_dos"
+  exerunsuit_verbose MS-DOS i386 $exerunsuit_prog_dos
   $exerunsuit_prog_dos "$@"
   exit
 fi
 
 if [[ $exerunsuit_exe_type == *"ARMv7 Thumb"* ]]; then
   if [[ $exerunsuit_arch == "arm"* ]]; then
-  echo "OS:Windows NT | CPU:armhf | Runner:$exerunsuit_prog_win"
+  exerunsuit_verbose "Windows NT" armhf $exerunsuit_prog_win
   $exerunsuit_prog_win "$@"
   exit
   fi
   if [[ $exerunsuit_arch == "aarch64"* ]]; then
-  echo "OS:Windows NT | CPU:armhf | Runner:$exerunsuit_prog_win"
+  exerunsuit_verbose "Windows NT" armhf $exerunsuit_prog_win
   $exerunsuit_prog_win "$@"
   exit
   fi
-  echo "OS:Windows NT | CPU:armhf | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" armhf NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"Alpha"* ]]; then
-  echo "OS:Windows NT | CPU:alpha | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" alpha NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"Intel Itanium"* ]]; then
-  echo "OS:Windows NT | CPU:ia64 | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" ia64 NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"MIPS R4000"* ]]; then
-  echo "OS:Windows NT | CPU:mips | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" mips NONE!
   exit
 fi
 
 
 if [[ $exerunsuit_exe_type == *"PowerPC"* ]]; then
-  echo "OS:Windows NT | CPU:powerpc | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" powerpc NONE!
   exit
 fi
 
 if [[ $exerunsuit_exe_type == *"PE32+ executable"* ]]; then
     if [[ $exerunsuit_arch == "aarch64"* ]]; then
-    echo "OS:Windows NT | CPU:? | Runner:$exerunsuit_prog_win"
+    exerunsuit_verbose "Windows NT" "arm64 or unknown" $exerunsuit_prog_win
     $exerunsuit_prog_win "$@"
     exit
     fi
-  echo "OS:Windows NT | CPU:? | Runner:NONE!"
+  exerunsuit_verbose "Windows NT" "arm64 or unknown" NONE!
   exit
 fi
