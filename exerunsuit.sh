@@ -4,7 +4,7 @@ exerunsuit_prog_win="wine"
 exerunsuit_prog_dotnet="mono"
 exerunsuit_prog_os2="lx_loader"
 
-exerunsuit_exe_path="$1"
+exerunsuit_exe_path=$1
 
 exerunsuit_exe_type="$(file "$exerunsuit_exe_path")"
 
